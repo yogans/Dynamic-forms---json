@@ -1,0 +1,30 @@
+[
+    {
+        "name" : "Username",
+        "element" : "input",
+        "attributes" :  {
+            "type" : "text",
+            "id" : "userName",
+            "placeholder" : "username",
+            "class" : "form-control"
+        }        
+    },
+    {
+        "name" : "Password",
+        "element" : "input",
+        "attributes" :  {
+            "type" : "password",
+            "id" : "pass",
+            "placeholder" : "password",
+            "class" : "form-control"
+        }
+    },
+    {
+        "element" : "button",
+        "attributes" : {
+            "text" : "SignIn",
+            "type" : "submit",
+            "class" : "btn btn-primary"
+        }
+    }
+]
