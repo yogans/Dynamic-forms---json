@@ -1,9 +1,29 @@
 var app=angular.module('dynamicForm',[]);
 
+app.factory('fetchService',['$http','$q',function($http,$q){
+    return {
+        fetchJson : function(url) {
+            var defer =$q.defer();
+            
+            /* Fetching input JSON file using $http service */
+            $http.get(url).then(function(response){
+                defer.resolve(response.data);
+            });
+            return defer.promise;
+        }
+    };
+}]);
+
 app.controller('homePage',function($scope,$http,$q){
     
-    /* Fetching input JSON file using $http service */
-    $http.get('data/app.json').then(function(response){$scope.jsonData = response.data;},function(data,stCode,status){});
+    $scope.jsonData = [];
+    var baseUrl='data/';
+
+    /* fetch input json using fetchService factory */ 
+    fetchService.fetchJson(baseUrl+'app.json').then(function(data){
+        $scope.jsonData = data;
+        console.log(data);
+    });
     
     /* Function to manipulate the input JSON & adding dynamic DOM elements */
     $scope.show = function(){
